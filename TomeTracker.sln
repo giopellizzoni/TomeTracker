@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.Domain", "TomeTracker.Domain\TomeTracker.Domain.csproj", "{8839BAC4-E639-44F6-B22A-F96CBDB11AA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".configs", ".configs", "{316FB872-0201-497C-B6C8-343B518CB1AA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		..\.editorconfig = ..\.editorconfig
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.Application", "TomeTracker.Application\TomeTracker.Application.csproj", "{B628B4DF-D9CA-46F0-93D0-E616074414DD}"
 EndProject
