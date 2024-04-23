@@ -1,4 +1,4 @@
-namespace TomeTracker.Domain.Interfaces;
+namespace TomeTracker.Domain.Repositories;
 
 public interface IUnityOfWork
 {

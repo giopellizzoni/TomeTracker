@@ -1,14 +1,14 @@
 using TomeTracker.Domain.Entities;
 
-namespace TomeTracker.Domain.Interfaces;
+namespace TomeTracker.Domain.Repositories;
 
 public interface IBookRepository : IBaseRepository<Book>
 {
-    Task<Book> GetByISBN(
+    Task<Book?> GetByISBN(
         string isbn,
         CancellationToken cancellationToken);
 
-    Task<Book> GetByName(
+    Task<Book?> GetByName(
         string name,
         CancellationToken cancellationToken);
 }

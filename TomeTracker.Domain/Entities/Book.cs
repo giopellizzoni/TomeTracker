@@ -4,7 +4,7 @@ namespace TomeTracker.Domain.Entities;
 
 public class Book: BaseEntity
 {
-    public Book(string? title,
+    public Book(string title,
         string author,
         string isbn,
         int publishingYear)
@@ -16,7 +16,7 @@ public class Book: BaseEntity
         CreatedAt = DateTime.Now;
     }
 
-    public string? Title { get; private set; }
+    public string Title { get; private set; }
 
     public string Author { get; private set; }
 
