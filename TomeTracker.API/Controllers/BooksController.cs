@@ -62,6 +62,15 @@ public class BooksController : ControllerBase
         return Ok(response);
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var request = new DeleteBookRequest(id);
+        await _mediator.Send(request);
+
+        return NoContent();
+    }
+
     private List<string> GetValidatorErrorMessages()
     {
         return ModelState
