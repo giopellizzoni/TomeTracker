@@ -7,13 +7,13 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.Book.Commands;
 
-public class UpdateBookRequestHandler: IRequestHandler<UpdateBookRequest, BookResponse>
+public sealed class UpdateBookRequestHandler: IRequestHandler<UpdateBookRequest, BookResponse>
 {
     private readonly IUnityOfWork _unitOfWork;
-    private readonly Mapper _mapper;
+    private readonly IMapper _mapper;
 
     public UpdateBookRequestHandler(IUnityOfWork unitOfWork,
-        Mapper mapper)
+        IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
