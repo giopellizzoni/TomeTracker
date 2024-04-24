@@ -4,7 +4,7 @@ using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
-public class UnityOfWork: IUnityOfWork
+public sealed class UnityOfWork: IUnityOfWork
 {
     private readonly TomeTrackerDbContext _context;
     private IDbContextTransaction _transaction;
@@ -41,7 +41,6 @@ public class UnityOfWork: IUnityOfWork
     public void Dispose()
     {
         Dispose(true);
-        GC.SuppressFinalize(this);
     }
 
     private void Dispose(bool disposing)

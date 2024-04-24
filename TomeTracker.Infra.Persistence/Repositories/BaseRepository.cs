@@ -10,7 +10,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T: BaseEntity
 {
     protected readonly TomeTrackerDbContext Context;
 
-    public BaseRepository(TomeTrackerDbContext context)
+    protected BaseRepository(TomeTrackerDbContext context)
     {
         Context = context;
     }

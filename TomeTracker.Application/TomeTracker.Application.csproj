@@ -16,4 +16,8 @@
       <ProjectReference Include="..\TomeTracker.Domain\TomeTracker.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="UseCases\User\Queries\" />
+    </ItemGroup>
+
 </Project>
