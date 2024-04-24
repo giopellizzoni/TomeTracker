@@ -11,8 +11,5 @@ public class BookMapper : Profile
     {
         CreateMap<CreateBookRequest, Domain.Entities.Book>();
         CreateMap<Domain.Entities.Book, BookResponse>();
-
-        CreateMap<List<Domain.Entities.Book>, List<BookResponse>>();
-        CreateMap<List<BookResponse>, List<Domain.Entities.Book>>();
     }
 }

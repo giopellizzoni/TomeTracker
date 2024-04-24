@@ -52,7 +52,17 @@ public class BooksController : ControllerBase
         return Ok(bookResponseList);
     }
 
-    private List<String> GetValidatorErrorMessages()
+    [HttpPut]
+    public async Task<IActionResult> Put(
+        Guid id,
+        [FromBody] UpdateBookRequest request)
+    {
+        var response = await _mediator.Send(request);
+
+        return Ok(response);
+    }
+
+    private List<string> GetValidatorErrorMessages()
     {
         return ModelState
             .SelectMany(ms => ms.Value?.Errors!)

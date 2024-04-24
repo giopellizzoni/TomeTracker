@@ -23,4 +23,13 @@ public class Book: BaseEntity
     public string Isbn { get; private set; }
 
     public int PublishingYear { get; private set; }
+
+    public void Updated(string title, string author, string isbn, int publishingYear)
+    {
+        Title = title;
+        Author = author;
+        Isbn = isbn;
+        PublishingYear = publishingYear;
+        UpdatedAt = DateTime.Now;
+    }
 }
