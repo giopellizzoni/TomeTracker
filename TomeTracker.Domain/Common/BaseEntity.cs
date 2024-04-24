@@ -14,7 +14,7 @@ public abstract class BaseEntity
 
     public void Delete()
     {
-        IsActive = true;
+        IsActive = false;
         DeletedAt = DateTime.Now;
     }
 }
