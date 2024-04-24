@@ -14,7 +14,8 @@ public static class PersistenceModule
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDatabaseContext(configuration)
+        services
+            .AddDatabaseContext(configuration)
             .AddRepositories()
             .AddUnityOfWork();
 
@@ -23,9 +24,9 @@ public static class PersistenceModule
 
     private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("");
-        //services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseSqlServer(connectionString));
-        services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseInMemoryDatabase("TomeTrackerDB"));
+        var connectionString = configuration.GetConnectionString("TomeTrackerDB");
+        services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseSqlServer(connectionString));
+        // services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseInMemoryDatabase("TomeTrackerDB"));
 
         return services;
     }
