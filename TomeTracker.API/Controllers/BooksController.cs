@@ -22,6 +22,15 @@ public class BooksController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BookRequest request)
     {
+        if (!ModelState.IsValid)
+        {
+            var messages = ModelState
+                .SelectMany(ms => ms.Value?.Errors!)
+                .Select(e => e.ErrorMessage)
+                .ToList();
+            return BadRequest(messages);
+        }
+
         var book = await _mediator.Send(request);
 
         return Ok(book);

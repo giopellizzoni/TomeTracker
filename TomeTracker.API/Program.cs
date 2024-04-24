@@ -1,4 +1,8 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+
 using TomeTracker.Application;
+using TomeTracker.Application.UseCases.Book.CreateBook;
 using TomeTracker.Infra.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplicationModule();
 
+// FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateBookValidators>();
+
+// API
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
