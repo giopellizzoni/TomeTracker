@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TomeTracker.Infra.Persistence.Context;
 
@@ -11,9 +12,11 @@ using TomeTracker.Infra.Persistence.Context;
 namespace TomeTracker.Infra.Persistence.Migrations
 {
     [DbContext(typeof(TomeTrackerDbContext))]
-    partial class TomeTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240424211014_AddUserMigration")]
+    partial class AddUserMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
