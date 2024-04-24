@@ -1,6 +1,6 @@
 namespace TomeTracker.Domain.Repositories;
 
-public interface IUnityOfWork
+public interface IUnitOfWork
 {
     IBookRepository Books { get; }
 

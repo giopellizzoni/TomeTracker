@@ -20,7 +20,7 @@ public sealed class UpdateBookRequestHandlerTests
         var bookRepository = new Mock<IBookRepository>();
         bookRepository.Setup( b =>  b.Get(It.IsAny<Guid>(), new CancellationToken())).ReturnsAsync(book);
 
-        var unityOfWork = new Mock<IUnityOfWork>();
+        var unityOfWork = new Mock<IUnitOfWork>();
         unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
 
         var mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Book, BookResponse>()));

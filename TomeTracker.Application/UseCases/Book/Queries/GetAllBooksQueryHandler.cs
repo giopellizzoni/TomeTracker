@@ -9,9 +9,9 @@ namespace TomeTracker.Application.UseCases.Book.Queries;
 
 public sealed class GetAllBooksQueryHandler: IRequestHandler<GetAllBooksQuery, List<BookResponse>>
 {
-    private readonly IUnityOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    public GetAllBooksQueryHandler(IUnityOfWork unitOfWork,
+    public GetAllBooksQueryHandler(IUnitOfWork unitOfWork,
         IMapper mapper)
     {
         _unitOfWork = unitOfWork;

@@ -41,7 +41,7 @@ public static class PersistenceModule
 
     private static IServiceCollection AddUnityOfWork(this IServiceCollection services)
     {
-        services.AddScoped<IUnityOfWork, UnityOfWork>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;
     }
 

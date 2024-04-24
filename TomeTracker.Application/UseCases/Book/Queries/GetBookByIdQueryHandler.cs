@@ -9,11 +9,11 @@ namespace TomeTracker.Application.UseCases.Book.Queries;
 
 public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookResponse?>
 {
-    private readonly IUnityOfWork _unityOfWork;
+    private readonly IUnitOfWork unitOfWork;
     private readonly IMapper _mapper;
-    public GetBookByIdQueryHandler(IUnityOfWork unityOfWork, IMapper mapper)
+    public GetBookByIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        _unityOfWork = unityOfWork;
+        this.unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
@@ -21,7 +21,7 @@ public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookResp
         GetBookByIdQuery request,
         CancellationToken cancellationToken)
     {
-        var book = await _unityOfWork.Books.Get(request.Id, cancellationToken);
+        var book = await unitOfWork.Books.Get(request.Id, cancellationToken);
         return _mapper.Map<BookResponse>(book);
     }
 }

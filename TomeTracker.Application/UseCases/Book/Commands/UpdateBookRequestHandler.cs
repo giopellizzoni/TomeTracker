@@ -9,10 +9,10 @@ namespace TomeTracker.Application.UseCases.Book.Commands;
 
 public sealed class UpdateBookRequestHandler: IRequestHandler<UpdateBookRequest, BookResponse>
 {
-    private readonly IUnityOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UpdateBookRequestHandler(IUnityOfWork unitOfWork,
+    public UpdateBookRequestHandler(IUnitOfWork unitOfWork,
         IMapper mapper)
     {
         _unitOfWork = unitOfWork;

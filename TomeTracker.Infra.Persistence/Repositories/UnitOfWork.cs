@@ -4,11 +4,11 @@ using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
-public sealed class UnityOfWork: IUnityOfWork
+public sealed class UnitOfWork: IUnitOfWork
 {
     private readonly TomeTrackerDbContext _context;
     private IDbContextTransaction _transaction;
-    public UnityOfWork(TomeTrackerDbContext context, IBookRepository bookRepository, IUserRepository userRepository)
+    public UnitOfWork(TomeTrackerDbContext context, IBookRepository bookRepository, IUserRepository userRepository)
     {
         _context = context;
         Books = bookRepository;

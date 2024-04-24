@@ -9,12 +9,12 @@ namespace TomeTracker.Application.UseCases.Book.Commands;
 
 public class CreateBookRequestHandler: IRequestHandler<CreateBookRequest, BookResponse>
 {
-    private readonly IUnityOfWork _unityOfWork;
+    private readonly IUnitOfWork unitOfWork;
     private readonly IMapper _mapper;
 
-    public CreateBookRequestHandler(IUnityOfWork unityOfWork, IMapper mapper)
+    public CreateBookRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        _unityOfWork = unityOfWork;
+        this.unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
@@ -23,10 +23,10 @@ public class CreateBookRequestHandler: IRequestHandler<CreateBookRequest, BookRe
         CancellationToken cancellationToken)
     {
         var book = _mapper.Map<Domain.Entities.Book>(request);
-        await _unityOfWork.BeginTransactionAsync();
-        _unityOfWork.Books.Create(book);
+        await unitOfWork.BeginTransactionAsync();
+        unitOfWork.Books.Create(book);
 
-        await _unityOfWork.CommitTransactionAsync();
+        await unitOfWork.CommitTransactionAsync();
 
         return _mapper.Map<BookResponse>(book);
     }

@@ -26,7 +26,7 @@ public sealed class GetAllBooksQueryTests
         var bookRepository = new Mock<IBookRepository>();
         bookRepository.Setup( b =>  b.GetAll(new CancellationToken())).ReturnsAsync(books);
 
-        var unityOfWork = new Mock<IUnityOfWork>();
+        var unityOfWork = new Mock<IUnitOfWork>();
         unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
 
         var getAllBooksQuery = new GetAllBooksQuery();

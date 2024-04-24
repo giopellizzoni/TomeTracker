@@ -6,21 +6,21 @@ namespace TomeTracker.Application.UseCases.Book.Commands;
 
 public sealed class DeleteBookRequestHandler: IRequestHandler<DeleteBookRequest, Unit>
 {
-    private readonly IUnityOfWork _unityOfWork;
+    private readonly IUnitOfWork unitOfWork;
 
-    public DeleteBookRequestHandler(IUnityOfWork unityOfWork)
+    public DeleteBookRequestHandler(IUnitOfWork unitOfWork)
     {
-        _unityOfWork = unityOfWork;
+        this.unitOfWork = unitOfWork;
     }
 
     public async Task<Unit> Handle(
         DeleteBookRequest request,
         CancellationToken cancellationToken)
     {
-        var book = await _unityOfWork.Books.Get(request.Id, cancellationToken);
-        await _unityOfWork.BeginTransactionAsync();
+        var book = await unitOfWork.Books.Get(request.Id, cancellationToken);
+        await unitOfWork.BeginTransactionAsync();
         book?.Delete();
-        await _unityOfWork.CommitTransactionAsync();
+        await unitOfWork.CommitTransactionAsync();
 
         return Unit.Value;
     }

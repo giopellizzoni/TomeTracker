@@ -15,7 +15,7 @@ public sealed class DeleteBookRequestHandlerTests
         var bookRepository = new Mock<IBookRepository>();
         bookRepository.Setup( b =>  b.Get(It.IsAny<Guid>(), new CancellationToken())).ReturnsAsync(book);
 
-        var unityOfWork = new Mock<IUnityOfWork>();
+        var unityOfWork = new Mock<IUnitOfWork>();
         unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
 
         var deleteBookRequest = new DeleteBookRequest(book.Id);
