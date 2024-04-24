@@ -2,6 +2,7 @@ using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
 
+using TomeTracker.Application.UseCases.Book.GetBookById;
 using TomeTracker.Application.UseCases.Book.Models;
 
 namespace TomeTracker.API.Controllers;
@@ -24,15 +25,29 @@ public class BooksController : ControllerBase
     {
         if (!ModelState.IsValid)
         {
-            var messages = ModelState
-                .SelectMany(ms => ms.Value?.Errors!)
-                .Select(e => e.ErrorMessage)
-                .ToList();
+            var messages = GetValidatorErrorMessages();
             return BadRequest(messages);
         }
 
-        var book = await _mediator.Send(request);
+        var bookResponse = await _mediator.Send(request);
 
-        return Ok(book);
+        return CreatedAtAction(nameof(GetById), new { id = bookResponse.Id }, bookResponse);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var query = new GetBookByIdQuery(id);
+        var bookResponse = await _mediator.Send(query);
+
+        return Ok(bookResponse);
+    }
+
+    private List<String> GetValidatorErrorMessages()
+    {
+        return ModelState
+            .SelectMany(ms => ms.Value?.Errors!)
+            .Select(e => e.ErrorMessage)
+            .ToList();
     }
 }
