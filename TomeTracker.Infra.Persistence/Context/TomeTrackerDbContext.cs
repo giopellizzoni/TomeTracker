@@ -2,9 +2,9 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using TomeTracker.Domain.Entities;
 
-namespace TomeTracker.Persistence.Context;
+namespace TomeTracker.Infra.Persistence.Context;
 
-public class BookDbContext: DbContext
+public class TomeTrackerDbContext: DbContext
 {
     public DbSet<Book> Books { get; set; }
 

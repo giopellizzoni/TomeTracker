@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".configs", ".configs", "{31
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.Application", "TomeTracker.Application\TomeTracker.Application.csproj", "{B628B4DF-D9CA-46F0-93D0-E616074414DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.Persistence", "TomeTracker.Persistence\TomeTracker.Persistence.csproj", "{6665EBF5-4245-4721-92FD-5E2FE0C879D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.Infra.Persistence", "TomeTracker.Infra.Persistence\TomeTracker.Infra.Persistence.csproj", "{6665EBF5-4245-4721-92FD-5E2FE0C879D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomeTracker.API", "TomeTracker.API\TomeTracker.API.csproj", "{3CCC1893-A9D0-411B-9824-F8990DC71435}"
 EndProject

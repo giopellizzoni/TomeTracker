@@ -6,5 +6,5 @@ public interface IUnityOfWork
 
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();
-    Task<int> SaveChangesAsync();
+    Task SaveChangesAsync();
 }

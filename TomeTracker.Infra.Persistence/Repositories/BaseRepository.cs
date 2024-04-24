@@ -2,15 +2,15 @@ using Microsoft.EntityFrameworkCore;
 
 using TomeTracker.Domain.Common;
 using TomeTracker.Domain.Repositories;
-using TomeTracker.Persistence.Context;
+using TomeTracker.Infra.Persistence.Context;
 
-namespace TomeTracker.Persistence.Repositories;
+namespace TomeTracker.Infra.Persistence.Repositories;
 
 public class BaseRepository<T> : IBaseRepository<T> where T: BaseEntity
 {
-    protected readonly BookDbContext Context;
+    protected readonly TomeTrackerDbContext Context;
 
-    public BaseRepository(BookDbContext context)
+    public BaseRepository(TomeTrackerDbContext context)
     {
         Context = context;
     }

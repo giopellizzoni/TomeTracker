@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>TomeTracker.Persistence</RootNamespace>
+        <RootNamespace>TomeTracker.Infra.Persistence</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +13,9 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     </ItemGroup>
 
 </Project>
