@@ -1,11 +1,17 @@
 using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
+
 using TomeTracker.Domain.Entities;
 
 namespace TomeTracker.Infra.Persistence.Context;
 
-public class TomeTrackerDbContext: DbContext
+public class TomeTrackerDbContext : DbContext
 {
+    public TomeTrackerDbContext(DbContextOptions<TomeTrackerDbContext> options) : base(options)
+    {
+    }
+
     public DbSet<Book> Books { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

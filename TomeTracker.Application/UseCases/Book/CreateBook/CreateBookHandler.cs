@@ -1,11 +1,9 @@
 using AutoMapper;
-
 using MediatR;
-
 using TomeTracker.Application.UseCases.Book.Models;
 using TomeTracker.Domain.Repositories;
 
-namespace TomeTracker.Application.UseCases.Book.Handler;
+namespace TomeTracker.Application.UseCases.Book.CreateBook;
 
 public class CreateBookHandler: IRequestHandler<BookRequest, BookResponse>
 {

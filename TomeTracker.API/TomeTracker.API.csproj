@@ -11,4 +11,9 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TomeTracker.Application\TomeTracker.Application.csproj" />
+      <ProjectReference Include="..\TomeTracker.Infra.Persistence\TomeTracker.Infra.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>
