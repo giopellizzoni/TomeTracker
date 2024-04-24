@@ -25,7 +25,6 @@ public class CreateBookRequestHandler: IRequestHandler<CreateBookRequest, BookRe
         var book = _mapper.Map<Domain.Entities.Book>(request);
         await _unityOfWork.BeginTransactionAsync();
         _unityOfWork.Books.Create(book);
-        await _unityOfWork.SaveChangesAsync();
 
         await _unityOfWork.CommitTransactionAsync();
 

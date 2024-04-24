@@ -8,13 +8,16 @@ public class UnityOfWork: IUnityOfWork
 {
     private readonly TomeTrackerDbContext _context;
     private IDbContextTransaction _transaction;
-    public UnityOfWork(TomeTrackerDbContext context, IBookRepository bookRepository)
+    public UnityOfWork(TomeTrackerDbContext context, IBookRepository bookRepository, IUserRepository userRepository)
     {
         _context = context;
         Books = bookRepository;
+        Users = userRepository;
     }
 
     public IBookRepository Books { get; }
+
+    public IUserRepository Users { get; }
 
     public async Task BeginTransactionAsync()
     {
@@ -25,6 +28,7 @@ public class UnityOfWork: IUnityOfWork
     {
         try
         {
+            await _context.SaveChangesAsync();
             await _transaction.CommitAsync();
         }
         catch (Exception)
@@ -32,11 +36,6 @@ public class UnityOfWork: IUnityOfWork
             await _transaction.RollbackAsync();
             throw;
         }
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
     }
 
     public void Dispose()

@@ -27,7 +27,6 @@ public sealed class UpdateBookRequestHandler: IRequestHandler<UpdateBookRequest,
         await _unitOfWork.BeginTransactionAsync();
 
         book?.Updated(request.Title, request.Author, request.ISBN, request.PublishingYear);
-        await _unitOfWork.SaveChangesAsync();
         await _unitOfWork.CommitTransactionAsync();
 
         return _mapper.Map<BookResponse>(book);
