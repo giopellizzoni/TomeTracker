@@ -1,7 +1,8 @@
 using MediatR;
-using TomeTracker.Application.UseCases.Book.Models;
 
-namespace TomeTracker.Application.UseCases.Book.GetBookById;
+using TomeTracker.Application.Models;
+
+namespace TomeTracker.Application.UseCases.Book.Queries;
 
 public class GetBookByIdQuery: IRequest<BookResponse?>
 {

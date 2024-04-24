@@ -2,7 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 
 using TomeTracker.Application;
-using TomeTracker.Application.UseCases.Book.CreateBook;
+using TomeTracker.Application.UseCases.Book.Validators;
 using TomeTracker.Infra.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);

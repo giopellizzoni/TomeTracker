@@ -1,10 +1,10 @@
 using FluentValidation;
 
-using TomeTracker.Application.UseCases.Book.Models;
+using TomeTracker.Application.UseCases.Book.Commands;
 
-namespace TomeTracker.Application.UseCases.Book.CreateBook;
+namespace TomeTracker.Application.UseCases.Book.Validators;
 
-public class CreateBookValidators : AbstractValidator<BookRequest>
+public class CreateBookValidators : AbstractValidator<CreateBookRequest>
 {
     public CreateBookValidators()
     {

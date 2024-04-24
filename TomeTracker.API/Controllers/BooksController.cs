@@ -2,8 +2,8 @@ using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
 
-using TomeTracker.Application.UseCases.Book.GetBookById;
-using TomeTracker.Application.UseCases.Book.Models;
+using TomeTracker.Application.UseCases.Book.Commands;
+using TomeTracker.Application.UseCases.Book.Queries;
 
 namespace TomeTracker.API.Controllers;
 
@@ -21,7 +21,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] BookRequest request)
+    public async Task<IActionResult> Post([FromBody] CreateBookRequest request)
     {
         if (!ModelState.IsValid)
         {
@@ -41,6 +41,15 @@ public class BooksController : ControllerBase
         var bookResponse = await _mediator.Send(query);
 
         return Ok(bookResponse);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var query = new GetAllBooksQuery();
+        var bookResponseList = await _mediator.Send(query);
+
+        return Ok(bookResponseList);
     }
 
     private List<String> GetValidatorErrorMessages()

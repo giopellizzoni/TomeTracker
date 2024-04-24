@@ -2,10 +2,10 @@ using AutoMapper;
 
 using MediatR;
 
-using TomeTracker.Application.UseCases.Book.Models;
+using TomeTracker.Application.Models;
 using TomeTracker.Domain.Repositories;
 
-namespace TomeTracker.Application.UseCases.Book.GetBookById;
+namespace TomeTracker.Application.UseCases.Book.Queries;
 
 public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookResponse?>
 {

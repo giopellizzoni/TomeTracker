@@ -1,23 +1,25 @@
 using AutoMapper;
+
 using MediatR;
-using TomeTracker.Application.UseCases.Book.Models;
+
+using TomeTracker.Application.Models;
 using TomeTracker.Domain.Repositories;
 
-namespace TomeTracker.Application.UseCases.Book.CreateBook;
+namespace TomeTracker.Application.UseCases.Book.Commands;
 
-public class CreateBookHandler: IRequestHandler<BookRequest, BookResponse>
+public class CreateBookRequestHandler: IRequestHandler<CreateBookRequest, BookResponse>
 {
     private readonly IUnityOfWork _unityOfWork;
     private readonly IMapper _mapper;
 
-    public CreateBookHandler(IUnityOfWork unityOfWork, IMapper mapper)
+    public CreateBookRequestHandler(IUnityOfWork unityOfWork, IMapper mapper)
     {
         _unityOfWork = unityOfWork;
         _mapper = mapper;
     }
 
     public async Task<BookResponse> Handle(
-        BookRequest request,
+        CreateBookRequest request,
         CancellationToken cancellationToken)
     {
         var book = _mapper.Map<Domain.Entities.Book>(request);

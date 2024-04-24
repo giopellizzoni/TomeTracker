@@ -1,4 +1,4 @@
-namespace TomeTracker.Application.UseCases.Book.Models;
+namespace TomeTracker.Application.Models;
 
 public sealed record BookResponse
 {
