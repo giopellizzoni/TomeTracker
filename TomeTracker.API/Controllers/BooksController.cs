@@ -39,6 +39,10 @@ public class BooksController : ControllerBase
     {
         var query = new GetBookByIdQuery(id);
         var bookResponse = await _mediator.Send(query);
+        if (bookResponse == null)
+        {
+            return NotFound("Book not found");
+        }
 
         return Ok(bookResponse);
     }
