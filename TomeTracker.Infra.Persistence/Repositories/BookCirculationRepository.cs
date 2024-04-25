@@ -8,7 +8,7 @@ namespace TomeTracker.Infra.Persistence.Repositories;
 
 public sealed class BookCirculationRepository : BaseRepository<BookCirculation>, IBookCirculationRepository
 {
-    private BookCirculationRepository(TomeTrackerDbContext context) : base(context)
+    public BookCirculationRepository(TomeTrackerDbContext context) : base(context)
     {
     }
 

@@ -2,7 +2,7 @@ using TomeTracker.Domain.Common;
 
 namespace TomeTracker.Domain.Entities;
 
-public class Book: BaseEntity
+public sealed class Book: BaseEntity
 {
     public Book(string title,
         string author,

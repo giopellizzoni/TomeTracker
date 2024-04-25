@@ -2,7 +2,7 @@ using TomeTracker.Domain.Common;
 
 namespace TomeTracker.Domain.Entities;
 
-public class User: BaseEntity
+public sealed class User: BaseEntity
 {
     public User(
         string email,

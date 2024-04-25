@@ -6,6 +6,8 @@ public interface IUnitOfWork
 
     IUserRepository Users { get; }
 
+    IBookCirculationRepository Circulations { get; }
+
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();
 }
