@@ -14,6 +14,7 @@ public class TomeTrackerDbContext : DbContext
 
     public DbSet<Book> Books { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<BookCirculation> Circulations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

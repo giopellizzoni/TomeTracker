@@ -1,23 +1,30 @@
 using Microsoft.EntityFrameworkCore.Storage;
+
 using TomeTracker.Domain.Repositories;
 using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
-public sealed class UnitOfWork: IUnitOfWork
+public sealed class UnitOfWork : IUnitOfWork
 {
     private readonly TomeTrackerDbContext _context;
     private IDbContextTransaction _transaction;
-    public UnitOfWork(TomeTrackerDbContext context, IBookRepository bookRepository, IUserRepository userRepository)
+
+    public UnitOfWork(
+        TomeTrackerDbContext context,
+        IBookRepository bookRepository,
+        IUserRepository userRepository,
+        IBookCirculationRepository circulations)
     {
         _context = context;
         Books = bookRepository;
         Users = userRepository;
+        Circulations = circulations;
     }
 
     public IBookRepository Books { get; }
-
     public IUserRepository Users { get; }
+    public IBookCirculationRepository Circulations { get; }
 
     public async Task BeginTransactionAsync()
     {
@@ -34,6 +41,7 @@ public sealed class UnitOfWork: IUnitOfWork
         catch (Exception)
         {
             await _transaction.RollbackAsync();
+
             throw;
         }
     }
@@ -45,7 +53,7 @@ public sealed class UnitOfWork: IUnitOfWork
 
     private void Dispose(bool disposing)
     {
-        if(disposing)
+        if (disposing)
         {
             _context.Dispose();
         }

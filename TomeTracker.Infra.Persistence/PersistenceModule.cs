@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using TomeTracker.Domain.Entities;
 using TomeTracker.Domain.Repositories;
 using TomeTracker.Infra.Persistence.Context;
 using TomeTracker.Infra.Persistence.Repositories;
@@ -35,6 +37,7 @@ public static class PersistenceModule
     {
         services.AddScoped<IBookRepository, BookRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IBookCirculationRepository, BookCirculationRepository>();
 
         return services;
     }
