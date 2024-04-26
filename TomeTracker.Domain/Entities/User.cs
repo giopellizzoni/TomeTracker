@@ -10,6 +10,8 @@ public sealed class User: BaseEntity
     {
         Email = email;
         Name = name;
+        CreatedAt = DateTime.Now;
+        IsActive = true;
     }
 
     public string Name { get; set; }

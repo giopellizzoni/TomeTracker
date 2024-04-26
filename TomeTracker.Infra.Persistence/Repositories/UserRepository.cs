@@ -6,7 +6,7 @@ using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
-public class UserRepository: BaseRepository<User>, IUserRepository
+public sealed class UserRepository : BaseRepository<User>, IUserRepository
 {
     public UserRepository(TomeTrackerDbContext context) : base(context)
     {
@@ -16,6 +16,7 @@ public class UserRepository: BaseRepository<User>, IUserRepository
         string email,
         CancellationToken cancellationToken)
     {
-        return await Context.Users.SingleOrDefaultAsync(u => u.Email.Equals(email), cancellationToken);
+        return await Context.Users.FirstOrDefaultAsync(
+            u => u.Email.Equals(email), cancellationToken);
     }
 }

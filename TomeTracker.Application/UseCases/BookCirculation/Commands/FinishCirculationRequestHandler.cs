@@ -4,25 +4,26 @@ using MediatR;
 
 using TomeTracker.Domain.Repositories;
 
-namespace TomeTracker.Application.UseCases.User.Commands;
+namespace TomeTracker.Application.UseCases.BookCirculation.Commands;
 
-public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest, Unit>
+public class FinishCirculationRequestHandler: IRequestHandler<FinishCirculationRequest, Unit>
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteUserRequestHandler(IUnitOfWork unitOfWork)
+    public FinishCirculationRequestHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
     public async Task<Unit> Handle(
-        DeleteUserRequest request,
+        FinishCirculationRequest request,
         CancellationToken cancellationToken)
     {
-        var user = await _unitOfWork.Users.Get(request.Id, cancellationToken);
+        var circulation = await _unitOfWork.Circulations.Get(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
-        user?.Delete();
+        circulation?.Delete();
         await _unitOfWork.CommitTransactionAsync();
+
         return Unit.Value;
     }
 }

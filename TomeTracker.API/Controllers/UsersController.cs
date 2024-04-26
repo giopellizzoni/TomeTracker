@@ -44,6 +44,7 @@ public class UsersController: ControllerBase
 
         return Ok(response);
     }
+
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -68,6 +69,19 @@ public class UsersController: ControllerBase
         await _mediator.Send(request);
 
         return NoContent();
+    }
+
+    [HttpGet("getByEmail/{email}" )]
+    public async Task<IActionResult> GetByEmail(string email)
+    {
+        var query = new GetUserByEmailRequest(email);
+        var response = await _mediator.Send(query);
+        if (response == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(response);
     }
 
     private List<string> GetValidatorErrorMessages()
