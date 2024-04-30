@@ -9,22 +9,17 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Commands;
 
-public sealed class DeleteBookRequestHandlerTests
+public sealed class DeleteBookRequestHandlerTests: BaseApplicationTests
 {
     [Fact]
     public async Task DeleteBook_ValidId_ReturnsNoContent()
     {
-        var book = new Book("Book Title", "Book Author", "ISBN Number", 1950) { Id = Guid.NewGuid() };
-        var bookRepository = new Mock<IBookRepository>();
-        bookRepository.Setup( b =>  b.Get(It.IsAny<Guid>(), new CancellationToken())).ReturnsAsync(book);
-
-        var unityOfWork = new Mock<IUnitOfWork>();
-        unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
-
-        var mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Book, BookResponse>()));
+        var book = CreateBook() ;
+        var unityOfWork = MakeUnitOfWorkWith(MakeRepositoryWith(book));
+        var mapper = MakeMapper();
 
         var deleteBookRequest = new DeleteBookRequest(book.Id);
-        var deleteBookRequestHandler = new DeleteBookRequestHandler(unityOfWork.Object, mapper);
+        var deleteBookRequestHandler = new DeleteBookRequestHandler(unityOfWork, mapper);
 
         await deleteBookRequestHandler.Handle(deleteBookRequest, new CancellationToken());
 

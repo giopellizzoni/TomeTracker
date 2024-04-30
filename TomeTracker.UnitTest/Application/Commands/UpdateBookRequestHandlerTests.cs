@@ -9,24 +9,18 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Commands;
 
-public sealed class UpdateBookRequestHandlerTests
+public sealed class UpdateBookRequestHandlerTests: BaseApplicationTests
 {
 
     [Fact]
     public async Task UpdateBook_ValidData_ReturnsUpdatedBook()
     {
-        var book = new Book("Book Title", "Book Author", "ISBN Number", 1950) { Id = Guid.NewGuid() };
-
-        var bookRepository = new Mock<IBookRepository>();
-        bookRepository.Setup( b =>  b.Get(It.IsAny<Guid>(), new CancellationToken())).ReturnsAsync(book);
-
-        var unityOfWork = new Mock<IUnitOfWork>();
-        unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
-
-        var mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Book, BookResponse>()));
+        var book = CreateBook();
+        var unityOfWork = MakeUnitOfWorkWith(MakeRepositoryWith(book));
+        var mapper = MakeMapper();
 
         var updateBookRequest = new UpdateBookRequest(book.Id, "New book Title", "New Author", "New ISBN", 1980);
-        var updateBookRequestHandler = new UpdateBookRequestHandler(unityOfWork.Object, mapper);
+        var updateBookRequestHandler = new UpdateBookRequestHandler(unityOfWork, mapper);
 
         var updatedBook = await updateBookRequestHandler.Handle(updateBookRequest, new CancellationToken());
 
