@@ -2,17 +2,17 @@ using AutoMapper;
 
 using MediatR;
 
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.User.Commands;
 
-public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest, Unit>
+public class DeleteUserRequestHandler : BaseHandler, IRequestHandler<DeleteUserRequest, Unit>
 {
-    private readonly IUnitOfWork _unitOfWork;
-
-    public DeleteUserRequestHandler(IUnitOfWork unitOfWork)
+    public DeleteUserRequestHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper) : base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
     }
 
     public async Task<Unit> Handle(
@@ -23,6 +23,7 @@ public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest, Unit>
         await _unitOfWork.BeginTransactionAsync();
         user?.Delete();
         await _unitOfWork.CommitTransactionAsync();
+
         return Unit.Value;
     }
 }

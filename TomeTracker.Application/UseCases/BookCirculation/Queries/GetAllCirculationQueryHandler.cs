@@ -3,20 +3,17 @@ using AutoMapper;
 using MediatR;
 
 using TomeTracker.Application.Models;
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.BookCirculation.Queries;
 
-public class GetAllCirculationQueryHandler: IRequestHandler<GetAllCirculationQuery, List<BookCirculationResponse>>
+public class GetAllCirculationQueryHandler: BaseHandler, IRequestHandler<GetAllCirculationQuery, List<BookCirculationResponse>>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
 
     public GetAllCirculationQueryHandler(IUnitOfWork unitOfWork,
-        IMapper mapper)
+        IMapper mapper): base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
 
     public async Task<List<BookCirculationResponse>> Handle(

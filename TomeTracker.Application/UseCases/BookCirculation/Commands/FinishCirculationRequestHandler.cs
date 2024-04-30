@@ -2,17 +2,16 @@ using AutoMapper;
 
 using MediatR;
 
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.BookCirculation.Commands;
 
-public class FinishCirculationRequestHandler: IRequestHandler<FinishCirculationRequest, Unit>
+public class FinishCirculationRequestHandler: BaseHandler, IRequestHandler<FinishCirculationRequest, Unit>
 {
-    private readonly IUnitOfWork _unitOfWork;
-
-    public FinishCirculationRequestHandler(IUnitOfWork unitOfWork)
+    public FinishCirculationRequestHandler(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
+
     }
 
     public async Task<Unit> Handle(

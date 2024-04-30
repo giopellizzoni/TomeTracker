@@ -1,5 +1,8 @@
+using AutoMapper;
+
 using Moq;
 
+using TomeTracker.Application.Models;
 using TomeTracker.Application.UseCases.Book.Commands;
 using TomeTracker.Domain.Entities;
 using TomeTracker.Domain.Repositories;
@@ -18,8 +21,10 @@ public sealed class DeleteBookRequestHandlerTests
         var unityOfWork = new Mock<IUnitOfWork>();
         unityOfWork.SetupGet(u => u.Books).Returns(bookRepository.Object);
 
+        var mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Book, BookResponse>()));
+
         var deleteBookRequest = new DeleteBookRequest(book.Id);
-        var deleteBookRequestHandler = new DeleteBookRequestHandler(unityOfWork.Object);
+        var deleteBookRequestHandler = new DeleteBookRequestHandler(unityOfWork.Object, mapper);
 
         await deleteBookRequestHandler.Handle(deleteBookRequest, new CancellationToken());
 

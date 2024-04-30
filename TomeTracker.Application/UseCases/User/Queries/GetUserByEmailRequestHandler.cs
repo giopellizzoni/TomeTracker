@@ -3,20 +3,17 @@ using AutoMapper;
 using MediatR;
 
 using TomeTracker.Application.Models;
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.User.Queries;
 
-public sealed class GetUserByEmailRequestHandler: IRequestHandler<GetUserByEmailRequest, UserResponse>
+public sealed class GetUserByEmailRequestHandler : BaseHandler, IRequestHandler<GetUserByEmailRequest, UserResponse>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-
-    public GetUserByEmailRequestHandler(IUnitOfWork unitOfWork,
-        IMapper mapper)
+    public GetUserByEmailRequestHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper): base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
 
     public async Task<UserResponse> Handle(

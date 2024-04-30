@@ -3,20 +3,17 @@ using AutoMapper;
 using MediatR;
 
 using TomeTracker.Application.Models;
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.Book.Commands;
 
-public sealed class UpdateBookRequestHandler: IRequestHandler<UpdateBookRequest, BookResponse>
+public sealed class UpdateBookRequestHandler : BaseHandler, IRequestHandler<UpdateBookRequest, BookResponse>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-
-    public UpdateBookRequestHandler(IUnitOfWork unitOfWork,
-        IMapper mapper)
+    public UpdateBookRequestHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper) : base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
 
     public async Task<BookResponse> Handle(

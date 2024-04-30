@@ -3,20 +3,16 @@ using AutoMapper;
 using MediatR;
 
 using TomeTracker.Application.Models;
+using TomeTracker.Application.UseCases.Base;
 using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.User.Queries;
 
-public class GetUserByIdRequestHandler: IRequestHandler<GetUserByIdRequest, UserResponse>
+public class GetUserByIdRequestHandler: BaseHandler, IRequestHandler<GetUserByIdRequest, UserResponse>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-
     public GetUserByIdRequestHandler(IUnitOfWork unitOfWork,
-        IMapper mapper)
+        IMapper mapper): base(unitOfWork, mapper)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
 
     public async Task<UserResponse> Handle(
