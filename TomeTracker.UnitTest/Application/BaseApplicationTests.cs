@@ -45,6 +45,14 @@ public abstract class BaseApplicationTests
         return bookRepository.Object;
     }
 
+    protected IBookRepository MakeRepositoryWith(List<Book> books)
+    {
+        var bookRepository = new Mock<IBookRepository>();
+        bookRepository.Setup(b => b.GetAll(new CancellationToken())).ReturnsAsync(books);
+
+        return bookRepository.Object;
+    }
+
     protected IUnitOfWork MakeUnitOfWorkWith(IBookRepository bookRepository)
     {
         var unityOfWork = new Mock<IUnitOfWork>();
