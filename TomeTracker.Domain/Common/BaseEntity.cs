@@ -10,11 +10,11 @@ public abstract class BaseEntity
 
     public DateTime? DeletedAt { get; protected set; }
 
-    public bool IsActive { get; protected set; }
+    public bool IsDeleted { get; protected set; }
 
     public void Delete()
     {
-        IsActive = false;
+        IsDeleted = true;
         DeletedAt = DateTime.Now;
     }
 }

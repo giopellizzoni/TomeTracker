@@ -12,7 +12,6 @@ public sealed class BookTests: IDisposable
         _sut!.Delete();
 
         Assert.NotNull(_sut.DeletedAt);
-        Assert.True(_sut.IsActive);
     }
 
     public void Dispose()

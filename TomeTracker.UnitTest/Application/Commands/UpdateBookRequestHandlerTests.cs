@@ -9,7 +9,7 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Commands;
 
-public sealed class UpdateBookRequestHandlerTests: BaseApplicationTests
+public sealed class UpdateBookRequestHandlerTests: BookBaseApplicationTests
 {
 
     [Fact]

@@ -23,7 +23,7 @@ public class UpdateUserRequestHandler : BaseHandler, IRequestHandler<UpdateUserR
         var user = await _unitOfWork.Users.Get(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
 
-        user?.Update(request.Name, request.Email);
+        user?.Update(request.Name);
         await _unitOfWork.CommitTransactionAsync();
 
         return _mapper.Map<UserResponse>(user);

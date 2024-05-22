@@ -2,7 +2,7 @@ using TomeTracker.Application.UseCases.Book.Commands;
 
 namespace TomeTracker.UnitTest.Application.Commands;
 
-public sealed class CreateBookRequestHandlerTests: BaseApplicationTests
+public sealed class CreateBookRequestHandlerTests: BookBaseApplicationTests
 {
     [Fact]
     public async Task CreateBook_ValidData_ReturnsBook()

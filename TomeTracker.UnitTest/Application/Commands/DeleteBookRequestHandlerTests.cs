@@ -9,7 +9,7 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Commands;
 
-public sealed class DeleteBookRequestHandlerTests: BaseApplicationTests
+public sealed class DeleteBookRequestHandlerTests: BookBaseApplicationTests
 {
     [Fact]
     public async Task DeleteBook_ValidId_ReturnsNoContent()

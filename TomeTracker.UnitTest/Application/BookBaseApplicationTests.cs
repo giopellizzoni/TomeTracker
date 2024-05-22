@@ -11,7 +11,7 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application;
 
-public abstract class BaseApplicationTests
+public abstract class BookBaseApplicationTests
 {
     private Faker _faker;
 

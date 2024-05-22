@@ -9,7 +9,7 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Queries;
 
-public sealed class GetBookByIdQueryTests: BaseApplicationTests
+public sealed class GetBookByIdQueryTests: BookBaseApplicationTests
 {
     [Fact]
     public async Task GetBookById_CallingId_ReturnsBook()

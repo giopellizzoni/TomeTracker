@@ -9,7 +9,7 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.UnitTest.Application.Queries;
 
-public sealed class GetAllBooksQueryTests: BaseApplicationTests
+public sealed class GetAllBooksQueryTests: BookBaseApplicationTests
 {
     [Fact]
     public async Task GetAllBooks_Query_ReturnsAllBooksList()
