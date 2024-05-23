@@ -1,4 +1,4 @@
-namespace TomeTracker.Domain.Common;
+namespace TomeTracker.Common;
 
 public abstract class BaseEntity
 {

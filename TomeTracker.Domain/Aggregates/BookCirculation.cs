@@ -1,4 +1,4 @@
-using TomeTracker.Domain.Common;
+using TomeTracker.Common;
 
 namespace TomeTracker.Domain.Entities;
 

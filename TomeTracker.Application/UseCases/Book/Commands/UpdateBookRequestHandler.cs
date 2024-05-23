@@ -23,7 +23,7 @@ public sealed class UpdateBookRequestHandler : BaseHandler, IRequestHandler<Upda
         var book = await _unitOfWork.Books.Get(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
 
-        book?.Updated(request.Title, request.Author, request.ISBN, request.PublishingYear);
+        book?.Update(request.Title, request.Author, request.ISBN, request.PublishingYear);
         await _unitOfWork.CommitTransactionAsync();
 
         return _mapper.Map<BookResponse>(book);

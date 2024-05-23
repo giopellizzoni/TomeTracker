@@ -1,4 +1,4 @@
-using TomeTracker.Domain.Common;
+using TomeTracker.Common;
 
 namespace TomeTracker.Domain.Entities;
 
@@ -24,7 +24,7 @@ public sealed class Book: BaseEntity
 
     public int PublishingYear { get; private set; }
 
-    public void Updated(string title, string author, string isbn, int publishingYear)
+    public void Update(string title, string author, string isbn, int publishingYear)
     {
         Title = title;
         Author = author;
