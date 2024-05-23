@@ -7,10 +7,12 @@ public sealed class User: BaseEntity
     public User(
         string email,
         string name,
+        string password,
         string role)
     {
         Email = email;
         Name = name;
+        Password = password;
         Role = role;
         CreatedAt = DateTime.Now;
     }
