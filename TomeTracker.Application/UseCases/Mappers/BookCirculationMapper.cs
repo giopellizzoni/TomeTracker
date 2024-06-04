@@ -9,7 +9,7 @@ public class BookCirculationMapper:Profile
 {
     public BookCirculationMapper()
     {
-        CreateMap<CreateCirculationRequest, Domain.Entities.BookCirculation>();
-        CreateMap<Domain.Entities.BookCirculation, BookCirculationResponse>();
+        CreateMap<CreateCirculationRequest, Domain.Aggregates.Circulations.BookCirculation>();
+        CreateMap<Domain.Aggregates.Circulations.BookCirculation, BookCirculationResponse>();
     }
 }

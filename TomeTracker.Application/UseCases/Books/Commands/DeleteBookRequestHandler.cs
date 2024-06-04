@@ -19,7 +19,7 @@ public sealed class DeleteBookRequestHandler : BaseHandler, IRequestHandler<Dele
         DeleteBookRequest request,
         CancellationToken cancellationToken)
     {
-        var book = await _unitOfWork.Books.Get(request.Id, cancellationToken);
+        var book = await _unitOfWork.Books.GetById(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
         book?.Delete();
         await _unitOfWork.CommitTransactionAsync();

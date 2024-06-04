@@ -20,7 +20,7 @@ public class UpdateUserRequestHandler : BaseHandler, IRequestHandler<UpdateUserR
         UpdateUserRequest request,
         CancellationToken cancellationToken)
     {
-        var user = await _unitOfWork.Users.Get(request.Id, cancellationToken);
+        var user = await _unitOfWork.Users.GetById(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
 
         user?.Update(request.Name);

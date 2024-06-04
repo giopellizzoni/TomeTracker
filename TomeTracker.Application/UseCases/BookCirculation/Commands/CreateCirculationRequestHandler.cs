@@ -18,7 +18,7 @@ public class CreateCirculationRequestHandler: BaseHandler, IRequestHandler<Creat
         CreateCirculationRequest request,
         CancellationToken cancellationToken)
     {
-        var circulation = _mapper.Map<Domain.Entities.BookCirculation>(request);
+        var circulation = _mapper.Map<Domain.Aggregates.Circulations.BookCirculation>(request);
         await _unitOfWork.BeginTransactionAsync();
         _unitOfWork.Circulations.Create(circulation);
         await _unitOfWork.CommitTransactionAsync();

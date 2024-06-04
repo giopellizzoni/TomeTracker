@@ -2,7 +2,10 @@ using System.Reflection;
 
 using Microsoft.EntityFrameworkCore;
 
-using TomeTracker.Domain.Entities;
+using TomeTracker.Domain.Aggregates;
+using TomeTracker.Domain.Aggregates.Books;
+using TomeTracker.Domain.Aggregates.Circulations;
+using TomeTracker.Domain.Aggregates.Users;
 
 namespace TomeTracker.Infra.Persistence.Context;
 

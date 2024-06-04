@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using TomeTracker.Domain.Entities;
+using TomeTracker.Domain.Aggregates;
+using TomeTracker.Domain.Aggregates.Users;
 
 namespace TomeTracker.Infra.Persistence.Configurations;
 

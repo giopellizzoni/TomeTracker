@@ -1,8 +1,8 @@
 using TomeTracker.Common;
 
-namespace TomeTracker.Domain.Entities;
+namespace TomeTracker.Domain.Aggregates.Users;
 
-public sealed class User: BaseEntity
+public sealed class User: AggregateRoot
 {
     public User(
         string email,

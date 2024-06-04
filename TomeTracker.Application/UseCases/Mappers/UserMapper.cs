@@ -9,7 +9,7 @@ public class UserMapper: Profile
 {
     public UserMapper()
     {
-        CreateMap<CreateUserRequest, Domain.Entities.User>();
-        CreateMap<Domain.Entities.User, UserResponse>();
+        CreateMap<CreateUserRequest, Domain.Aggregates.Users.User>();
+        CreateMap<Domain.Aggregates.Users.User, UserResponse>();
     }
 }

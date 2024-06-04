@@ -18,7 +18,7 @@ public class FinishCirculationRequestHandler: BaseHandler, IRequestHandler<Finis
         FinishCirculationRequest request,
         CancellationToken cancellationToken)
     {
-        var circulation = await _unitOfWork.Circulations.Get(request.Id, cancellationToken);
+        var circulation = await _unitOfWork.Circulations.GetById(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
         circulation?.Delete();
         await _unitOfWork.CommitTransactionAsync();

@@ -20,7 +20,7 @@ public class CreateUserRequestHandler: BaseHandler, IRequestHandler<CreateUserRe
         CreateUserRequest request,
         CancellationToken cancellationToken)
     {
-        var user = _mapper.Map<Domain.Entities.User>(request);
+        var user = _mapper.Map<Domain.Aggregates.Users.User>(request);
         await _unitOfWork.BeginTransactionAsync();
         _unitOfWork.Users.Create(user);
         await _unitOfWork.CommitTransactionAsync();

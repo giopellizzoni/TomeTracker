@@ -9,7 +9,7 @@ public class BookMapper : Profile
 {
     public BookMapper()
     {
-        CreateMap<CreateBookRequest, Domain.Entities.Book>();
-        CreateMap<Domain.Entities.Book, BookResponse>();
+        CreateMap<CreateBookRequest, Domain.Aggregates.Books.Book>();
+        CreateMap<Domain.Aggregates.Books.Book, BookResponse>();
     }
 }

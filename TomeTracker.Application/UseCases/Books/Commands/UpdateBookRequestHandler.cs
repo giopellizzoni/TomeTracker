@@ -8,20 +8,22 @@ using TomeTracker.Domain.Repositories;
 
 namespace TomeTracker.Application.UseCases.Book.Commands;
 
-public class CreateBookRequestHandler: BaseHandler, IRequestHandler<CreateBookRequest, BookResponse>
+public sealed class UpdateBookRequestHandler : BaseHandler, IRequestHandler<UpdateBookRequest, BookResponse>
 {
-    public CreateBookRequestHandler(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+    public UpdateBookRequestHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper) : base(unitOfWork, mapper)
     {
     }
 
     public async Task<BookResponse> Handle(
-        CreateBookRequest request,
+        UpdateBookRequest request,
         CancellationToken cancellationToken)
     {
-        var book = _mapper.Map<Domain.Entities.Book>(request);
+        var book = await _unitOfWork.Books.GetById(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
-        _unitOfWork.Books.Create(book);
 
+        // book?.Update(request.Title, request.Author, request.ISBN, request.PublishingYear);
         await _unitOfWork.CommitTransactionAsync();
 
         return _mapper.Map<BookResponse>(book);

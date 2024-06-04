@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using TomeTracker.Domain.Entities;
+using TomeTracker.Domain.Aggregates;
+using TomeTracker.Domain.Aggregates.Circulations;
 
 namespace TomeTracker.Infra.Persistence.Configurations;
 
@@ -12,15 +13,18 @@ public class BookCirculationConfiguration: IEntityTypeConfiguration<BookCirculat
         builder.HasKey(b => b.Id);
 
         builder
-            .Property(b => b.IdUser)
+            .Property(b => b.UserId)
             .IsRequired();
 
         builder
-            .Property(b => b.IdBook)
+            .Property(b => b.BookId)
             .IsRequired();
 
         builder
-            .Property(b => b.CirculationDate)
+            .Property(b => b.CirculationDate.StartDate)
             .IsRequired();
+
+        builder
+            .Property(b => b.CirculationDate.EndDate);
     }
 }

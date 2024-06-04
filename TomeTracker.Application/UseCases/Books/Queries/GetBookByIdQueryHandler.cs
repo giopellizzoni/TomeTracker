@@ -21,7 +21,7 @@ public class GetBookByIdQueryHandler : BaseHandler, IRequestHandler<GetBookByIdQ
         GetBookByIdQuery request,
         CancellationToken cancellationToken)
     {
-        var book = await _unitOfWork.Books.Get(request.Id, cancellationToken);
+        var book = await _unitOfWork.Books.GetById(request.Id, cancellationToken);
 
         return _mapper.Map<BookResponse>(book);
     }

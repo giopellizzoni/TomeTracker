@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using TomeTracker.Domain.Entities;
 using TomeTracker.Domain.Repositories;
 using TomeTracker.Infra.Persistence.Context;
 using TomeTracker.Infra.Persistence.Repositories;
@@ -11,7 +10,6 @@ namespace TomeTracker.Infra.Persistence;
 
 public static class PersistenceModule
 {
-
     public static IServiceCollection AddPersistence(
         this IServiceCollection services,
         IConfiguration configuration)
@@ -24,11 +22,14 @@ public static class PersistenceModule
         return services;
     }
 
-    private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
+    private static IServiceCollection AddDatabaseContext(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("TomeTrackerDB");
-        services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseSqlServer(connectionString));
-        // services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseInMemoryDatabase("TomeTrackerDB"));
+
+        // services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseSqlServer(connectionString));
+        services.AddDbContext<TomeTrackerDbContext>(opt => opt.UseInMemoryDatabase("TomeTrackerDB"));
 
         return services;
     }
@@ -45,7 +46,7 @@ public static class PersistenceModule
     private static IServiceCollection AddUnityOfWork(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
         return services;
     }
-
 }

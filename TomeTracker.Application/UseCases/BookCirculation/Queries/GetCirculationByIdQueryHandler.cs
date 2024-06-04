@@ -20,7 +20,7 @@ public class GetCirculationByIdQueryHandler : BaseHandler, IRequestHandler<GetCi
         GetCirculationByIdQuery request,
         CancellationToken cancellationToken)
     {
-        var circulation = await _unitOfWork.Circulations.Get(request.Id, cancellationToken);
+        var circulation = await _unitOfWork.Circulations.GetById(request.Id, cancellationToken);
 
         return _mapper.Map<BookCirculationResponse>(circulation);
     }

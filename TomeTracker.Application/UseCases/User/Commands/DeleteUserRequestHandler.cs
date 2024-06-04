@@ -19,7 +19,7 @@ public class DeleteUserRequestHandler : BaseHandler, IRequestHandler<DeleteUserR
         DeleteUserRequest request,
         CancellationToken cancellationToken)
     {
-        var user = await _unitOfWork.Users.Get(request.Id, cancellationToken);
+        var user = await _unitOfWork.Users.GetById(request.Id, cancellationToken);
         await _unitOfWork.BeginTransactionAsync();
         user?.Delete();
         await _unitOfWork.CommitTransactionAsync();

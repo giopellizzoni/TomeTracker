@@ -1,4 +1,5 @@
-using TomeTracker.Domain.Entities;
+using TomeTracker.Domain.Aggregates;
+using TomeTracker.Domain.Aggregates.Books;
 
 namespace TomeTracker.Domain.Repositories;
 

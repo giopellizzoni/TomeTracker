@@ -19,7 +19,7 @@ public class GetUserByIdRequestHandler: BaseHandler, IRequestHandler<GetUserById
         GetUserByIdRequest request,
         CancellationToken cancellationToken)
     {
-        var user = await _unitOfWork.Users.Get(request.Id, cancellationToken);
+        var user = await _unitOfWork.Users.GetById(request.Id, cancellationToken);
 
         return _mapper.Map<UserResponse>(user);
     }

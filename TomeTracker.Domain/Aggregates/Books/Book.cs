@@ -1,13 +1,13 @@
 using TomeTracker.Common;
 
-namespace TomeTracker.Domain.Entities;
+namespace TomeTracker.Domain.Aggregates.Books;
 
-public sealed class Book: BaseEntity
+public sealed class Book: AggregateRoot
 {
     public Book(string title,
         string author,
         string isbn,
-        int publishingYear)
+        int publishingYear) : base()
     {
         Title = title;
         Author = author;
@@ -23,13 +23,4 @@ public sealed class Book: BaseEntity
     public string Isbn { get; private set; }
 
     public int PublishingYear { get; private set; }
-
-    public void Update(string title, string author, string isbn, int publishingYear)
-    {
-        Title = title;
-        Author = author;
-        Isbn = isbn;
-        PublishingYear = publishingYear;
-        UpdatedAt = DateTime.Now;
-    }
 }
