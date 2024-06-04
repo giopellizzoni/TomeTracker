@@ -1,5 +1,4 @@
 using TomeTracker.Common;
-using TomeTracker.Domain.Aggregates.Circulations.ValueObjects;
 
 namespace TomeTracker.Domain.Aggregates.Circulations;
 
@@ -16,7 +15,7 @@ public sealed class BookCirculation : AggregateRoot
     public BookId BookId { get; private set; }
     public CirculationDate CirculationDate { get; private set; }
 
-    public void EndCirculationOnDate(DateTime endDate)
+    public void RegisterEndCirculationDate(DateTime endDate)
     {
         CirculationDate = CirculationDate.FinishCirculation(endDate);
     }

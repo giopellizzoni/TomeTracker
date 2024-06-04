@@ -1,7 +1,6 @@
 using FluentAssertions;
 
 using TomeTracker.Domain.Aggregates.Circulations;
-using TomeTracker.Domain.Aggregates.Circulations.ValueObjects;
 
 namespace TomeTracker.Domain.Tests.Aggregates.Circulations;
 
@@ -26,7 +25,7 @@ public class CirculationSpecs
         var circulation = new BookCirculation(userId, bookId);
         var newDate = DateTime.Today.AddDays(3);
 
-        circulation.EndCirculationOnDate(newDate);
+        circulation.RegisterEndCirculationDate(newDate);
 
         circulation.CirculationDate.EndDate.Should().NotBeNull();
     }
@@ -39,7 +38,7 @@ public class CirculationSpecs
         var circulation = new BookCirculation(userId, bookId);
         var newDate = DateTime.Today.AddDays(-1);
 
-        Action action = () => circulation.EndCirculationOnDate(newDate);
+        Action action = () => circulation.RegisterEndCirculationDate(newDate);
 
         action.Should().Throw<ArgumentException>();
     }
@@ -51,7 +50,7 @@ public class CirculationSpecs
         var circulation = new BookCirculation(userId, bookId);
         var newDate = DateTime.Today;
 
-        Action action = () => circulation.EndCirculationOnDate(newDate);
+        Action action = () => circulation.RegisterEndCirculationDate(newDate);
 
         action.Should().Throw<ArgumentException>();
     }

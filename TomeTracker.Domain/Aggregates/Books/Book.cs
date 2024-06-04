@@ -7,7 +7,7 @@ public sealed class Book: AggregateRoot
     public Book(string title,
         string author,
         string isbn,
-        int publishingYear) : base()
+        int publishingYear)
     {
         Title = title;
         Author = author;
