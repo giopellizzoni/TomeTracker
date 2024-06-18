@@ -13,10 +13,6 @@ public sealed class BookCirculation : AggregateRoot
         CirculationDate = CirculationDate.StartCirculation(DateTime.Today);
     }
 
-    public BookCirculation()
-    {
-    }
-
     public UserId UserId { get; private set; }
     public BookId BookId { get; private set; }
     public CirculationDate CirculationDate { get; private set; }
