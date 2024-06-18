@@ -3,7 +3,7 @@ using TomeTracker.Domain.Aggregates.ValueObjects;
 
 namespace TomeTracker.Domain.Aggregates.Books;
 
-public sealed class Book: AggregateRoot<long>
+public sealed class Book: AggregateRoot
 {
     public Book(BookTitle title,
         string author,
@@ -29,6 +29,6 @@ public sealed class Book: AggregateRoot<long>
     public int PublishingYear { get; private set; }
 
     public int Quantity { get; private set; }
-    
+
 
 }

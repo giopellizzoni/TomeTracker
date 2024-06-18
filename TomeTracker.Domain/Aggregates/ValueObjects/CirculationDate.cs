@@ -40,7 +40,5 @@ public class CirculationDate: ValueObject<CirculationDate>
     {
         Guard.Against.Null(date.EndDate);
         return date.EndDate.Value.DayOfWeek != DayOfWeek.Sunday;
-
     }
-
 }
