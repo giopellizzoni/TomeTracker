@@ -1,6 +1,7 @@
 ﻿namespace TomeTracker.Common;
 
-public class AggregateRoot : Entity<Guid>
+public class AggregateRoot<TId> : Entity<TId>
+    where TId : new()
 {
     private readonly List<IEvent> _events = new();
     public IList<IEvent> Events => _events;

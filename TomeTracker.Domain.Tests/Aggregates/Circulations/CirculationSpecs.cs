@@ -1,6 +1,7 @@
 using FluentAssertions;
 
 using TomeTracker.Domain.Aggregates.Circulations;
+using TomeTracker.Domain.Aggregates.ValueObjects;
 
 namespace TomeTracker.Domain.Tests.Aggregates.Circulations;
 

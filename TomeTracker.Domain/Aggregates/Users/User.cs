@@ -1,8 +1,9 @@
 using TomeTracker.Common;
+using TomeTracker.Domain.Aggregates.ValueObjects;
 
 namespace TomeTracker.Domain.Aggregates.Users;
 
-public sealed class User: AggregateRoot
+public sealed class User: AggregateRoot<Guid>
 {
     public User(
         string email,

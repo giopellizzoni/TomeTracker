@@ -3,12 +3,7 @@ using System.Diagnostics;
 namespace TomeTracker.Common;
 
 public abstract class Entity<TId>
-    where TId : new()
 {
-    protected Entity()
-    {
-        Id = new TId();
-    }
 
     public TId Id { get; }
 

@@ -2,7 +2,7 @@ using Ardalis.GuardClauses;
 
 using TomeTracker.Common;
 
-namespace TomeTracker.Domain.Aggregates.Circulations;
+namespace TomeTracker.Domain.Aggregates.ValueObjects;
 
 public class UserId: ValueObject<UserId>
 {

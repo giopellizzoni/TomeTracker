@@ -1,14 +1,19 @@
 using TomeTracker.Common;
+using TomeTracker.Domain.Aggregates.ValueObjects;
 
 namespace TomeTracker.Domain.Aggregates.Circulations;
 
-public sealed class BookCirculation : AggregateRoot
+public sealed class BookCirculation : AggregateRoot<Guid>
 {
     public BookCirculation(UserId userId, BookId bookId)
     {
         UserId = userId;
         BookId = bookId;
         CirculationDate = CirculationDate.StartCirculation(DateTime.Today);
+    }
+
+    public BookCirculation()
+    {
     }
 
     public UserId UserId { get; private set; }
