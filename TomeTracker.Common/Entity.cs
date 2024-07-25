@@ -30,11 +30,21 @@ public abstract class Entity<TId>
 
     public override bool Equals(object? obj)
     {
-        if (obj is not Entity<TId> other) { return false; }
+        if (obj is not Entity<TId> other)
+        {
+            return false;
+        }
 
-        if (ReferenceEquals(this, other)) { return true; }
+        if (ReferenceEquals(this, other))
+        {
+            return true;
+        }
 
         return Equals(Id, other.Id);
+    }
+    public override int GetHashCode()
+    {
+        return Id!.GetHashCode();
     }
 
     public static bool operator ==(Entity<TId> a, Entity<TId> b)
@@ -50,8 +60,5 @@ public abstract class Entity<TId>
         return !(a == b);
     }
 
-    public override int GetHashCode()
-    {
-        return Id!.GetHashCode();
-    }
+
 }

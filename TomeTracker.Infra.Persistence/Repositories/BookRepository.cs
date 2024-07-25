@@ -7,9 +7,10 @@ using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
-public sealed class BookRepository: BaseRepository<Book>, IBookRepository
+public sealed class BookRepository : BaseRepository<Book>, IBookRepository
 {
-    public BookRepository(TomeTrackerDbContext context) : base(context)
+    public BookRepository(TomeTrackerDbContext context)
+        : base(context)
     {
     }
 
