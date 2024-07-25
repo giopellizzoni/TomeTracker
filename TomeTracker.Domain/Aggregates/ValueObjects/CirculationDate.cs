@@ -2,7 +2,7 @@ using Ardalis.GuardClauses;
 
 using TomeTracker.Common;
 
-namespace TomeTracker.Domain.Aggregates.Circulations;
+namespace TomeTracker.Domain.Aggregates.ValueObjects;
 
 public class CirculationDate: ValueObject<CirculationDate>
 {
@@ -41,5 +41,4 @@ public class CirculationDate: ValueObject<CirculationDate>
         Guard.Against.Null(date.EndDate);
         return date.EndDate.Value.DayOfWeek != DayOfWeek.Sunday;
     }
-
 }

@@ -2,23 +2,23 @@ using System.Diagnostics;
 
 namespace TomeTracker.Common;
 
-public abstract class Entity<TId>
-    where TId : new()
+public abstract class Entity
 {
-    protected Entity()
+
+    public Entity()
     {
-        Id = new TId();
+        Id = Guid.NewGuid();
+        CreatedAt = DateTime.Today;
+        IsDeleted = false;
     }
 
-    public TId Id { get; }
+    public Guid Id { get; }
 
     public DateTime CreatedAt { get; protected init; }
 
     public DateTime? UpdatedAt { get; protected set; }
 
     public DateTime? DeletedAt { get; protected set; }
-
-
 
     public bool IsDeleted { get; protected set; }
 
@@ -30,10 +30,14 @@ public abstract class Entity<TId>
 
     public override bool Equals(object? obj)
     {
+<<<<<<< HEAD
         if (obj is not Entity<TId> other)
         {
             return false;
         }
+=======
+        if (obj is not Entity other) { return false; }
+>>>>>>> 51b38f981f006e722180850a1ecce34fccd476f8
 
         if (ReferenceEquals(this, other))
         {
@@ -47,7 +51,7 @@ public abstract class Entity<TId>
         return Id!.GetHashCode();
     }
 
-    public static bool operator ==(Entity<TId> a, Entity<TId> b)
+    public static bool operator ==(Entity a, Entity b)
     {
         if (ReferenceEquals(a, null) && ReferenceEquals(b, null)) { return true; }
         if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) { return false; }
@@ -55,7 +59,7 @@ public abstract class Entity<TId>
         return a.Equals(b);
     }
 
-    public static bool operator !=(Entity<TId> a, Entity<TId> b)
+    public static bool operator !=(Entity a, Entity b)
     {
         return !(a == b);
     }

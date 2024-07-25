@@ -1,4 +1,5 @@
 using TomeTracker.Common;
+using TomeTracker.Domain.Aggregates.ValueObjects;
 
 namespace TomeTracker.Domain.Aggregates.Users;
 

@@ -6,8 +6,12 @@ using TomeTracker.Infra.Persistence.Context;
 
 namespace TomeTracker.Infra.Persistence.Repositories;
 
+<<<<<<< HEAD
 public class BaseRepository<T> : IBaseRepository<T>
     where T : AggregateRoot
+=======
+public class BaseRepository<T> : IBaseRepository<T>  where T: AggregateRoot
+>>>>>>> 51b38f981f006e722180850a1ecce34fccd476f8
 {
     protected readonly TomeTrackerDbContext Context;
 

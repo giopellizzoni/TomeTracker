@@ -2,7 +2,7 @@ using TomeTracker.Common;
 
 namespace TomeTracker.Domain.Repositories;
 
-public interface IBaseRepository<T> where T : AggregateRoot
+public interface IBaseRepository<T>
 {
     void Create(T entity);
     void Update(T entity);

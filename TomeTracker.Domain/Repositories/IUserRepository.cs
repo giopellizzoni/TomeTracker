@@ -1,4 +1,3 @@
-using TomeTracker.Domain.Aggregates;
 using TomeTracker.Domain.Aggregates.Users;
 
 namespace TomeTracker.Domain.Repositories;
