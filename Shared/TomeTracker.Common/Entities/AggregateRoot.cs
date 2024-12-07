@@ -1,4 +1,4 @@
-﻿namespace TomeTracker.Common;
+﻿namespace TomeTracker.Common.Entities;
 
 public class AggregateRoot : Entity
 {

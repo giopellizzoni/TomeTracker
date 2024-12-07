@@ -1,0 +1,6 @@
+@TomeTracker.API_HostAddress = http://localhost:5073
+
+GET {{TomeTracker.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

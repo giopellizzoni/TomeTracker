@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\TomeTracker.Common\TomeTracker.Common.csproj" />
+    </ItemGroup>
+
 </Project>
